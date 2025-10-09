@@ -101,8 +101,3 @@ target_link_libraries(native-lib
         ${GLESv2-lib}
         ${EGL-lib}
 )
-
-# ----------------------
-# Status message
-# ----------------------
-message(STATUS "✅ Successfully linked OpenCV + OpenGL ES for native-lib")

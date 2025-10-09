@@ -2,11 +2,6 @@
 #include <opencv2/imgproc.hpp>
 #include <string> // You'll need to load shader strings from assets
 
-// NOTE: You need a way to load the shader files from your assets folder.
-// This is typically done by passing the JNIEnv* from Java down
-// or by using the Android Asset Manager C API.
-// For now, we'll use placeholder strings.
-
 const char* VERTEX_SHADER = R"glsl(
     attribute vec4 a_Position;
     attribute vec2 a_TexCoord;
@@ -73,9 +68,6 @@ void CameraRenderer::drawFrame(const cv::Mat& frame) {
         return;
     }
 
-    // This is a common and critical step!
-    // Canny output is 1-channel (grayscale). OpenGL needs RGBA.
-    // We must convert it before uploading.
     cv::Mat displayFrame;
     if (frame.channels() == 1) {
         cv::cvtColor(frame, displayFrame, cv::COLOR_GRAY2RGBA);
